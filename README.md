@@ -89,8 +89,8 @@ jwt-tool/
 └── main.go                \# Main application entrypoint
 
 ```
+````
 
----
 
 ## 👤 Contact
 
@@ -100,4 +100,3 @@ jwt-tool/
 * **LinkedIn**: [/in/rzhbadhon](https://linkedin.com/in/rzhbadhon)
 * **Instagram**: [@ig_rzhbadhon](https://www.instagram.com/ig_rzhbadhon)
 
-```
