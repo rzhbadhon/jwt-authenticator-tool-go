@@ -4,24 +4,38 @@ import (
 	"fmt"
 	"jwt-tool/handlers"
 	"net/http"
+	"os" 
+	"log"
 )
 
 func Routes(mux *http.ServeMux) {
-    mux.HandleFunc("/tool", handlers.CreateJWT) // use HandleFunc
+	mux.Handle("POST /tool", http.HandlerFunc(handlers.CreateJWT))
+
+	
+	mux.HandleFunc("GET /health", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("OK"))
+	})
 }
 
 
 func main() {
 
 	mux := http.NewServeMux()
-
-	
-
 	Routes(mux)
 
-	fmt.Println("Server running on http://localhost:8080")
-	err := http.ListenAndServe(":8080", handlers.Cors(mux))
+	
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" 
+	}
+
+	serverAddr := ":" + port
+	fmt.Println("Server running on", serverAddr)
+	
+
+	err := http.ListenAndServe(serverAddr, mux) 
 	if err != nil {
-		fmt.Println("Error Starting The Server")
+		log.Fatal("Error Starting The Server: ", err)
 	}
 }
