@@ -1,17 +1,21 @@
 package handlers
 
-import "net/http"
+import (
+	"net/http"
+
+	"github.com/rs/cors"
+)
 
 func Cors(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-		if r.Method == "OPTIONS" {
-			w.WriteHeader(http.StatusOK)
-			return
-		}
-		next.ServeHTTP(w, r)
-	})
-}
 
-// then use cors(mux) in ListenAndServe
+	c := cors.New(cors.Options{
+
+		AllowedOrigins: []string{"https://rzhbadhon.github.io"},
+
+		AllowedMethods: []string{"POST", "GET", "OPTIONS"},
+
+		AllowedHeaders: []string{"Content-Type"},
+	})
+
+	return c.Handler(next)
+}
