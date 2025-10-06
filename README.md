@@ -14,14 +14,12 @@
 ---
 
 <p align="center">
-  <a href="https://rzhbadhon.github.io/jwt-tool/"><strong>View Live Demo »</strong></a>
+  <a href="https://go-jwt-tool.github.io/"><strong>View Live Demo »</strong></a>
 </p>
 
 <br/>
 
-<p align="center">
-  <img src="https://i.imgur.com/uG9kSza.png" alt="Go-JWT Tool Screenshot" width="800"/>
-</p>
+<img src="https://i.ibb.co.com/kg6mScXk/Screenshot-2025-10-07-000436.png" alt="Screenshot-2025-10-07-000436" border="0">
 
 ## ✨ Features
 
